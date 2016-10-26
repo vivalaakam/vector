@@ -1,0 +1,16 @@
+.Topbar {
+  height: 120px;
+  padding: 40px 120px;
+  position: absolute;
+  z-index: 3;
+  transition: all 1s;
+  .logo {
+    font-size: 40px;
+    color: #fff;
+    text-transform: uppercase;
+  }
+
+  &.hidden {
+    transform: translateY(-100%);
+  }
+}

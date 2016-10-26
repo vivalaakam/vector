@@ -1,0 +1,49 @@
+$animation: 1s;
+
+.Video {
+  position: relative;
+  background-color: #fff;
+  height: 720px;
+  overflow: hidden;
+}
+
+.block, .player {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+}
+
+.blockEnter {
+  opacity: 0.01;
+  transition: opacity $animation ease-in;
+  &.blockEnterActive {
+    opacity: 1;
+  }
+}
+
+.blockLeave {
+  opacity: 1;
+  transition: opacity $animation ease-out;
+  &.blockLeaveActive {
+    opacity: 0.01;
+  }
+}
+
+.playerEnter {
+  transform: scale(1.1, 1.1);
+  transition: all $animation ease-in;
+
+  &.playerEnterActive {
+    transform: scale(1, 1);
+  }
+
+}
+
+.playerLeave {
+  transform: scale(1, 1);
+  transition: all $animation ease-out;
+  &.playerLeaveActive {
+    transform: scale(1.1, 1.1);
+  }
+}
+
