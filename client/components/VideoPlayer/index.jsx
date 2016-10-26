@@ -33,7 +33,7 @@ export default class VideoPlayer extends Component {
           ref={c => (this.refVideo = c)}
         >
           <source
-            src="https://fpdl.vimeocdn.com/vimeo-prod-skyfire-std-us/01/2763/7/188816044/625241717.mp4?token=58105b06_0xced3f113d97236237d42c76e945b43f89c7420ad"
+            src={this.props.url}
             type="video/mp4"
           />
         </video>

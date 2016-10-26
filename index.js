@@ -1,28 +1,22 @@
-var express = require('express');
-var app = express();
-var webpack = require('webpack');
-var config = require('./webpack.config');
+#!/usr/bin/env node
+const fs = require('fs');
+
+try {
+  const babelrc = fs.readFileSync('./.babelrc');
+  const config = JSON.parse(babelrc);
+  require('babel-register')(config);
+
+} catch (err) {
+  console.error('==>     ERROR: Error parsing your .babelrc.');
+  console.error(err);
+}
+
+var Webpack_isomorphic_tools = require('webpack-isomorphic-tools');
+
 var path = require('path');
-var port = process.env.PORT || 3000;
-var compiler = webpack(config);
+var rootDir = path.resolve(__dirname, '.');
 
-var bodyParser = require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-
-app.use(require('webpack-dev-middleware')(compiler, {
-  noInfo: true,
-  publicPath: config.output.publicPath
-}));
-
-app.use(require('webpack-hot-middleware')(compiler));
-
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-app.listen(port, function () {
-  console.log('Listening on port ' + port);
-});
+global.webpackIsomorphicTools = new Webpack_isomorphic_tools(require('./config/assets.config'))
+  .server(rootDir, function () {
+    require('./server')
+  });

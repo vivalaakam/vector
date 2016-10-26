@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import style from './style.scss';
-import back from './back.png';
 
 export default class VideoBlock extends Component {
   constructor(...args) {
@@ -42,7 +41,7 @@ export default class VideoBlock extends Component {
             </button>
           </div>
         </div>
-        <img src={back} className={style.image} onLoad={this.onLoad} ref={c =>(this.refImage = c)} />
+        <img src={require('./back.png')} className={style.image} onLoad={this.onLoad} ref={c =>(this.refImage = c)} />
       </div>
     );
   }

@@ -45,6 +45,7 @@ export default class Video extends Component {
         <VideoPlayer
           key="video"
           stopVideo={::this.stopVideo}
+          url={this.props.main.videoUrl}
         />
       );
     }
