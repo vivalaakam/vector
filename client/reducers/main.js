@@ -3,6 +3,7 @@ import { createAction } from 'redux-actions';
 const MAIN = 'main/MAIN_UPDATE';
 const PLAY_VIDEO = 'main/PLAY_VIDEO';
 const SHOW_COURSES = 'main/SHOW_COURSES';
+const HIDE_TOPBAR = 'main/HIDE_TOPBAR';
 
 const $$initialState = {
   playVideo: false
@@ -16,6 +17,8 @@ export default function main(state = $$initialState, { type, payload }) {
       return { ...state, playVideo: payload };
     case SHOW_COURSES:
       return { ...state, showCourses: payload };
+    case HIDE_TOPBAR:
+      return { ...state, topbarHidden: payload };
     default:
       return state
   }
@@ -27,6 +30,8 @@ const playVideo = createAction(PLAY_VIDEO);
 
 const showCourses = createAction(SHOW_COURSES);
 
+const hideTopbar = createAction(HIDE_TOPBAR);
+
 export {
-  updateMain, playVideo, showCourses
+  updateMain, playVideo, showCourses, hideTopbar
 }

@@ -8,7 +8,7 @@ export default class App extends Component {
   render() {
     return (
       <div className={style.App}>
-        <Topbar main={this.props.main} />
+        <Topbar hideTopbar={this.props.actions.hideTopbar} main={this.props.main} />
         <Video actions={this.props.actions} main={this.props.main} />
         <Cources showCourses={this.props.actions.showCourses} main={this.props.main} />
       </div>
