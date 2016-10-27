@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Close from '../UI/Close';
 import style from './style.scss';
 
 export default class VideoPlayer extends Component {
@@ -25,7 +26,7 @@ export default class VideoPlayer extends Component {
     const { stopVideo } = this.props;
     return (
       <div className={style.VideoPlayer }>
-        <button className={style.hide} onClick={stopVideo}></button>
+        <Close className={style.hide} onClick={stopVideo}></Close>
         <video
           className={ style.video}
           muted

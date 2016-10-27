@@ -45,7 +45,7 @@ module.exports = {
         loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
       }, {
         test: webpackIsomorphicToolsPlugin.regular_expression('images'),
-        loader: "file-loader"
+        loader: "url-loader?limit=8192"
       }
     ]
   }

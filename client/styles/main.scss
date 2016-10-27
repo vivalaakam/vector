@@ -1,4 +1,12 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,700);
+@font-face {
+  font-family: 'FugueRegular';
+  src: url('http://strelka.com/css/fonts/strelka-webfont.eot');
+  src: url('http://strelka.com/css/fonts/strelka-webfont.eot?#iefix') format('embedded-opentype'),
+  url('http://strelka.com/css/fonts/strelka-webfont.woff') format('woff'),
+  url('http://strelka.com/css/fonts/strelka-webfont.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html {
   min-height: 100%;
@@ -7,7 +15,9 @@ html {
 
 body, .root {
   min-height: 100%;
-  font-family: 'Roboto', sans-serif;
+  font: normal 26px/36px 'FugueRegular', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
   font-size: 16px;
   line-height: 24px;
 }

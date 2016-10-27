@@ -10,6 +10,7 @@ var port = process.env.PORT || 3000;
 var bodyParser = require('body-parser');
 
 app.use(express.static('static'));
+app.use(express.static('public'));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
