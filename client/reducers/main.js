@@ -20,7 +20,7 @@ export default function main(state = $$initialState, { type, payload }) {
     case HIDE_TOPBAR:
       return { ...state, topbarHidden: payload };
     default:
-      return state
+      return state;
   }
 }
 
@@ -34,4 +34,4 @@ const hideTopbar = createAction(HIDE_TOPBAR);
 
 export {
   updateMain, playVideo, showCourses, hideTopbar
-}
+};

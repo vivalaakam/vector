@@ -1,10 +1,15 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import Cource from '../Cource';
 import Close from '../UI/Close';
-import style from './style.scss';
+import style from './cources.scss';
 
 export default class Cources extends Component {
+
+  static propTypes = {
+    main: PropTypes.object.isRequired,
+    showCourses: PropTypes.func.isRequired
+  };
 
   hideCourses() {
     this.props.showCourses(false);
@@ -59,7 +64,7 @@ export default class Cources extends Component {
           </div>
         </div>
         <div className={style.back}>
-          <Close className={style.close} onClick={::this.hideCourses}></Close>
+          <Close className={style.close} onClick={::this.hideCourses} />
         </div>
       </div>
     );

@@ -9,6 +9,7 @@
     "build": "webpack --verbose --colors --display-error-details --config ./config/prod.config.js",
     "watch-client": "webpack --verbose --colors --display-error-details --config config/dev.config.js --watch",
     "dev": "concurrently --kill-others \"npm run watch-client\" \"npm run start\"",
+    "eslint": "eslint --ext .js --ext .jsx ./",
     "prod": "npm run build && npm run start"
   },
   "license": "MIT",
@@ -26,10 +27,9 @@
     "babel-preset-stage-0": "^6.5.0",
     "babel-preset-stage-2": "^6.13.0",
     "babel-preset-stage-3": "^6.11.0",
+    "babel-register": "^6.18.0",
     "body-parser": "^1.15.2",
     "classnames": "^2.2.5",
-    "concurrent": "^0.3.2",
-    "concurrently": "^3.1.0",
     "cross-env": "^2.0.1",
     "css-loader": "^0.24.0",
     "eventsource-polyfill": "^0.9.6",
@@ -51,6 +51,7 @@
     "redux-actions": "^0.12.0",
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
+    "request": "^2.76.0",
     "sass-loader": "^4.0.0",
     "serialize-javascript": "^1.3.0",
     "style-loader": "^0.13.1",
@@ -60,5 +61,17 @@
     "webpack-hot-middleware": "^2.12.2",
     "webpack-isomorphic-tools": "^2.6.3",
     "whatwg-fetch": "^1.0.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^7.0.0",
+    "concurrently": "^3.1.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1",
+    "eventsource-polyfill": "^0.9.6",
+    "jsdom": "^9.6.0",
+    "webpack-dev-server": "^1.16.2"
   }
 }

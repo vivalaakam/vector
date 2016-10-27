@@ -9,7 +9,9 @@
   "rules": {
     "react/forbid-prop-types": 0,
     "react/jsx-no-bind": 0,
+    "react/no-danger": 0,
     "strict": 0,
+    "global-require": 0,
     "no-mixed-operators": 0,
     "comma-dangle": [
       2,
@@ -20,8 +22,7 @@
       2,
       {
         "allow": [
-          "__INITIAL_STATE__",
-          "__"
+          "__data"
         ]
       }
     ],
@@ -33,6 +34,7 @@
   "globals": {
     "fetch": false,
     "document": false,
-    "window": false
+    "window": false,
+    "webpackIsomorphicTools": false
   }
 }

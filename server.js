@@ -1,13 +1,12 @@
 import express from 'express';
 import webpack from 'webpack';
+import bodyParser from 'body-parser';
+import request from 'request';
 import render from './render';
 
 const app = express();
+const port = process.env.PORT || 3000;
 
-var path = require('path');
-var port = process.env.PORT || 3000;
-
-var bodyParser = require('body-parser');
 
 app.use(express.static('static'));
 app.use(express.static('public'));
@@ -29,19 +28,17 @@ if (process.env.NODE_ENV === 'development') {
   app.use(require('webpack-hot-middleware')(compiler));
 }
 
-app.get('/', function (req, res) {
-  var request = require('request');
-  request('https://player.vimeo.com/video/170509497/config', function (error, response, body) {
-    if (!error && response.statusCode == 200) {
+app.get('/', (req, res) => {
+  request('https://player.vimeo.com/video/170509497/config', (error, response, body) => {
+    if (!error && response.statusCode === 200) {
       const resp = JSON.parse(body);
       const video = resp.request.files.progressive.find(file => file.quality === '540p');
       res.send(render({ main: { videoUrl: video.url } }));
     }
-  })
-
-
+  });
 });
 
-app.listen(port, function () {
-  console.log('Listening on port ' + port);
+app.listen(port, () => {
+  /* eslint no-console: ["error", { allow: ["log"] }] */
+  console.log(`Listening on port ${port}`);
 });

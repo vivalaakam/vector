@@ -1,17 +1,20 @@
-import React, { Component, PropTypes } from 'react';
-import Topbar from '../Topbar/Topbar.jsx';
-import Video from '../Video/Video.jsx';
+import React, { PropTypes } from 'react';
+import Topbar from '../Topbar';
+import Video from '../Video';
 import Cources from '../Cources';
-import style from './style.scss';
+import style from './app.scss';
 
-export default class App extends Component {
-  render() {
-    return (
-      <div className={style.App}>
-        <Topbar hideTopbar={this.props.actions.hideTopbar} main={this.props.main} />
-        <Video actions={this.props.actions} main={this.props.main} />
-        <Cources showCourses={this.props.actions.showCourses} main={this.props.main} />
-      </div>
-    );
-  }
+export default function App({ main, actions }) {
+  return (
+    <div className={style.App}>
+      <Topbar hideTopbar={actions.hideTopbar} main={main} />
+      <Video actions={actions} main={main} />
+      <Cources showCourses={actions.showCourses} main={main} />
+    </div>
+  );
 }
+
+App.propTypes = {
+  main: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired
+};

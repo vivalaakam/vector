@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import classnames from 'classnames';
-import style from './Video.scss';
+import style from './video.scss';
 import VideoBlock from '../VideoBlock';
 import VideoPlayer from '../VideoPlayer';
 
@@ -9,22 +9,26 @@ const transitionBlockNames = {
   enter: style.blockEnter,
   enterActive: style.blockEnterActive,
   leave: style.blockLeave,
-  leaveActive: style.blockLeaveActive,
+  leaveActive: style.blockLeaveActive
 };
 
 const transitionPlayerNames = {
   enter: style.playerEnter,
   enterActive: style.playerEnterActive,
   leave: style.playerLeave,
-  leaveActive: style.playerLeaveActive,
+  leaveActive: style.playerLeaveActive
 };
 
 const ANIMATION = 1000;
 
 export default class Video extends Component {
 
-  playVideo() {
+  static propTypes = {
+    actions: PropTypes.object.isRequired,
+    main: PropTypes.object.isRequired
+  };
 
+  playVideo() {
     this.props.actions.playVideo(true);
   }
 

@@ -1,18 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
-import style from './style.scss';
+import style from './videoBlock.scss';
 
 export default class VideoBlock extends Component {
+
+  static propTypes = {
+    playVideo: PropTypes.func.isRequired
+  };
+
   constructor(...args) {
     super(...args);
     this.onLoad = ::this.onLoad;
-  }
-
-  onLoad() {
-    const ratioW = document.documentElement.clientWidth / this.refImage.clientWidth;
-    const ratioH = 720 / this.refImage.clientHeight;
-    this.refImage.classList.remove(style.portrait, style.landscape);
-    this.refImage.classList.add(style[ratioW > ratioH ? 'portrait' : 'landscape'])
   }
 
   componentDidMount() {
@@ -21,6 +19,13 @@ export default class VideoBlock extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.onLoad, false);
+  }
+
+  onLoad() {
+    const ratioW = document.documentElement.clientWidth / this.refImage.clientWidth;
+    const ratioH = 720 / this.refImage.clientHeight;
+    this.refImage.classList.remove(style.portrait, style.landscape);
+    this.refImage.classList.add(style[ratioW > ratioH ? 'portrait' : 'landscape']);
   }
 
   render() {
@@ -41,7 +46,13 @@ export default class VideoBlock extends Component {
             </button>
           </div>
         </div>
-        <img src={require('./back.png')} className={style.image} onLoad={this.onLoad} ref={c =>(this.refImage = c)} />
+        <img
+          src={require('./back.png')}
+          className={style.image}
+          onLoad={this.onLoad}
+          ref={c => (this.refImage = c)}
+          role="presentation"
+        />
       </div>
     );
   }
