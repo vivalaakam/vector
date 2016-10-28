@@ -107,4 +107,20 @@ $phone: "only screen and (min-device-width: 375px) and (max-device-width: 667px)
     width: 100%;
     height: auto;
   }
+
+  .scroll {
+    display: block;
+    position: absolute;
+    left: 50%;
+    bottom: 42px;
+    width: 23px;
+    height: 36px;
+    margin-left: -12px;
+    background: url(./scroll.svg);
+    z-index: 10;
+
+    @media #{$phone} {
+      bottom: 72px;
+    }
+  }
 }

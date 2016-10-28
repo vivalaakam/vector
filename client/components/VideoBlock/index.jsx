@@ -53,6 +53,7 @@ export default class VideoBlock extends Component {
           ref={c => (this.refImage = c)}
           role="presentation"
         />
+        <div className={style.scroll}></div>
       </div>
     );
   }
