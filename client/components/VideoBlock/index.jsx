@@ -15,6 +15,7 @@ export default class VideoBlock extends Component {
 
   componentDidMount() {
     window.addEventListener('resize', this.onLoad, false);
+    this.onLoad();
   }
 
   componentWillUnmount() {
@@ -30,7 +31,6 @@ export default class VideoBlock extends Component {
 
   render() {
     const { playVideo } = this.props;
-
     return (
       <div className={style.VideoBlock}>
         <div className={style.main}>
@@ -53,7 +53,7 @@ export default class VideoBlock extends Component {
           ref={c => (this.refImage = c)}
           alt="back"
         />
-        <div className={style.scroll}></div>
+        <div className={style.scroll} />
       </div>
     );
   }

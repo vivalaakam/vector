@@ -19,6 +19,4 @@ config.plugins.push(
   webpackIsomorphicToolsPlugin.development()
 );
 
-//config.module.loaders[0].loaders.unshift('react-hot');
-
 module.exports = config;

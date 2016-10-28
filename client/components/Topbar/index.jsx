@@ -37,7 +37,7 @@ export default class Topbar extends Component {
       this.scrollEvent = new Promise((resolve) => {
         const curr = window.pageYOffset;
         setTimeout(() => {
-          resolve(curr - window.pageYOffset)
+          resolve(curr - window.pageYOffset);
         }, 500);
       }).then(this.scroll);
     }
@@ -62,7 +62,7 @@ export default class Topbar extends Component {
       <div className={mainClassName} ref={c => (this.refTop = c)}>
         <input id="hmbrgr" type="checkbox" className={style.checkbox} onChange={this.toggleTop} />
         <div className={style.logo}>
-          <label className={style.hamburger} htmlFor="hmbrgr"></label>
+          <label className={style.hamburger} htmlFor="hmbrgr" />
           Vector
         </div>
         <ul className={style.mainNav}>
