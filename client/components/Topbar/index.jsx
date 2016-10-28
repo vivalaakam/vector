@@ -5,30 +5,53 @@ import style from './topbar.scss';
 export default class Topbar extends Component {
 
   static propTypes = {
-    main: PropTypes.object.isRequired
+    main: PropTypes.object.isRequired,
+    hideTopbar: PropTypes.func.isRequired
   };
 
   constructor(...args) {
     super(...args);
-    this.onScroll = ::this.onScroll;
+
+    this.scroll = ::this.scroll;
+    this.initScroll = ::this.initScroll;
   }
 
   componentDidMount() {
-    // window.addEventListener('scroll', this.onScroll, false);
+    window.addEventListener('scroll', this.initScroll, false);
+    if (window.pageYOffset > 100) {
+      this.props.hideTopbar(true);
+    }
   }
 
   componentWillUnmount() {
-    //  window.removeEventListener('scroll', this.onScroll, false);
+    window.removeEventListener('scroll', this.initScroll, false);
   }
 
-  onScroll() {
-    /* eslint no-console: ["error", { allow: ["log"] }] */
-    console.log(this.props.main);
+  initScroll() {
+    if (!this.scrollEvent) {
+      this.scrollEvent = new Promise((resolve) => {
+        const curr = window.pageYOffset;
+        setTimeout(() => {
+          resolve(curr - window.pageYOffset)
+        }, 500);
+      }).then(this.scroll);
+    }
+  }
+
+  scroll(distance) {
+    if (distance < -100 && !this.props.main.topbarHidden) {
+      this.props.hideTopbar(true);
+    } else if (distance > 10 && this.props.main.topbarHidden) {
+      this.props.hideTopbar(false);
+    }
+
+    this.scrollEvent = null;
   }
 
   render() {
     const mainClassName = classnames(style.Topbar, {
-      [style.hidden]: this.props.main.playVideo || this.props.main.topbarHidden
+      [style.hidden]: this.props.main.playVideo || this.props.main.topbarHidden,
+      [style.tooltip]: this.props.main.topbarHidden === false && window.window.pageYOffset > 200
     });
     return (
       <div className={mainClassName}>
