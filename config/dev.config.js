@@ -8,6 +8,7 @@ const webpackIsomorphicToolsPlugin = new WebpackIsomorphicToolsPlugin(assetsConf
 config.devtool = 'cheap-module-eval-source-map';
 config.entry.unshift(
   'eventsource-polyfill',
+  'react-hot-loader/patch',
   'webpack-hot-middleware/client'
 );
 
@@ -17,5 +18,7 @@ config.plugins.push(
   new webpack.NoErrorsPlugin(),
   webpackIsomorphicToolsPlugin.development()
 );
+
+//config.module.loaders[0].loaders.unshift('react-hot');
 
 module.exports = config;

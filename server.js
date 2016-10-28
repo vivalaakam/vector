@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 if (process.env.NODE_ENV === 'development') {
-  const config = require('./config/webpack.config.js');
+  const config = require('./config/dev.config.js');
   const compiler = webpack(config);
 
   app.use(require('webpack-dev-middleware')(compiler, {
