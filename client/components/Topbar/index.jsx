@@ -14,6 +14,7 @@ export default class Topbar extends Component {
 
     this.scroll = ::this.scroll;
     this.initScroll = ::this.initScroll;
+    this.toggleTop = ::this.toggleTop;
   }
 
   componentDidMount() {
@@ -25,6 +26,10 @@ export default class Topbar extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.initScroll, false);
+  }
+
+  toggleTop() {
+    this.refTop.classList.toggle(style.toggled);
   }
 
   initScroll() {
@@ -54,8 +59,12 @@ export default class Topbar extends Component {
       [style.tooltip]: this.props.main.topbarHidden === false && window.window.pageYOffset > 200
     });
     return (
-      <div className={mainClassName}>
-        <div className={style.logo}>Vector</div>
+      <div className={mainClassName} ref={c => (this.refTop = c)}>
+        <input id="hmbrgr" type="checkbox" className={style.checkbox} onChange={this.toggleTop} />
+        <div className={style.logo}>
+          <label className={style.hamburger} htmlFor="hmbrgr"></label>
+          Vector
+        </div>
         <ul className={style.mainNav}>
           <li>
             <a href="/" className={style.link}>Курсы</a>
