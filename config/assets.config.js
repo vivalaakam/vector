@@ -25,6 +25,15 @@ module.exports = {
         }
         return module.source;
       }
+    },
+    fonts: {
+      extensions: [
+        'woff',
+        'woff2',
+        'ttf',
+        'eot'
+      ],
+      parser: WebpackIsomorphicToolsPlugin.url_loader_parser
     }
   }
 };
