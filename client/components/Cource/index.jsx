@@ -4,19 +4,21 @@ import style from './cource.scss';
 export default function Cource({ counter, description, title, image }) {
   return (
     <div className={style.Cource}>
-      <div className={style.counter}>
-        {counter}
-      </div>
+      <div className={style.wrapper}>
+        <div className={style.counter}>
+          {counter}
+        </div>
 
-      <div className={style.description}>
-        <div className={style.title}>
-          {title}
+        <div className={style.description}>
+          <div className={style.title}>
+            {title}
+          </div>
+          <div className={style.text}>
+            {description}
+          </div>
         </div>
-        <div className={style.text}>
-          {description}
-        </div>
+        <img src={image} className={style.image} alt={title} />
       </div>
-      <img src={image} className={style.image} alt={title} />
     </div>
   );
 }

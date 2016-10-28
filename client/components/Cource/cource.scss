@@ -1,21 +1,38 @@
+$phone: "only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2)";
+
 .Cource {
   display: inline-block;
   height: 600px;
-  width: 360px;
+  width: 390px;
   position: relative;
   font-size: 26px;
   line-height: 36px;
   overflow: hidden;
-  box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.15);
-  margin: 0px 30px;
   white-space: normal;
-  &:hover {
-    box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.3);
+  padding: 15px;
+  max-width: 100%;
+
+  .wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.15);
     transition: box-shadow 1s ease-in;
-    cursor: pointer;
+  }
+
+  &:hover {
+    .wrapper {
+      box-shadow: 0px 15px 20px 0px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+    }
     .text {
       height: 100%;
     }
+  }
+
+  @media #{$phone} {
+    padding: 15px 30px;
   }
 
   .counter {

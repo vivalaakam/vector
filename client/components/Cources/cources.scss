@@ -1,3 +1,5 @@
+$phone: "only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2)";
+
 .Cources {
   padding: 60px 0px;
   position: relative;
@@ -43,13 +45,17 @@
   }
 
   .info {
-    width: 600px;
+    max-width: 600px;
     display: inline-block;
     color: #fff;
     padding-left: 60px;
     z-index: 7;
     position: absolute;
     opacity: 1;
+
+    @media #{$phone} {
+      padding: 30px;
+    }
   }
 
   .cources {

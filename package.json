@@ -7,8 +7,8 @@
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --verbose --colors --display-error-details --config ./config/prod.config.js",
-    "build-dev": "webpack --verbose --colors --display-error-details --config ./config/dev.config.js",
-    "dev": "npm run build-dev && npm run start",
+    "build-dev": "webpack --verbose --watch --colors --display-error-details --config ./config/dev.config.js",
+    "dev": "concurrently --kill-others \"npm run build-dev\" \"npm run start\"",
     "eslint": "eslint --ext .js --ext .jsx ./",
     "prod": "npm run build && npm run start"
   },
