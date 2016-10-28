@@ -8,10 +8,13 @@
     "start": "node index.js --harmony-generators",
     "postinstall": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "prebuild": "npm run clean",
     "build": "webpack --verbose --colors --display-error-details --config ./config/prod.config.js",
+    "prebuild-dev": "npm run clean",
     "build-dev": "webpack --verbose --watch --colors --display-error-details --config ./config/dev.config.js",
     "dev": "concurrently --kill-others \"npm run build-dev\" \"npm run start\"",
-    "eslint": "eslint --ext .js --ext .jsx ./"
+    "eslint": "eslint --ext .js --ext .jsx ./",
+    "clean": "rimraf static"
   },
   "license": "MIT",
   "dependencies": {
@@ -47,6 +50,7 @@
     "redux-logger": "^2.6.1",
     "redux-thunk": "^2.1.0",
     "request": "^2.76.0",
+    "rimraf": "^2.5.4",
     "sass-loader": "^4.0.0",
     "serialize-javascript": "^1.3.0",
     "style-loader": "^0.13.1",
@@ -60,6 +64,7 @@
     "concurrently": "^3.1.0",
     "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
+    "eslint-config-airbnb-base": "^9.0.0",
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1",
