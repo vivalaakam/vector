@@ -11,14 +11,15 @@ export default class Topbar extends Component {
 
   constructor(...args) {
     super(...args);
-
     this.scroll = ::this.scroll;
     this.initScroll = ::this.initScroll;
     this.toggleTop = ::this.toggleTop;
+    this.resetScroll = ::this.resetScroll;
   }
 
   componentDidMount() {
     window.addEventListener('scroll', this.initScroll, false);
+    this.refTop.addEventListener('transitionend', this.resetScroll, false);
     if (window.pageYOffset > 100) {
       this.props.hideTopbar(true);
     }
@@ -26,6 +27,12 @@ export default class Topbar extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.initScroll, false);
+    this.refTop.removeEventListener('transitionend', this.resetScroll, false);
+
+  }
+
+  resetScroll() {
+    this.scrollEvent = null;
   }
 
   toggleTop() {
@@ -38,7 +45,7 @@ export default class Topbar extends Component {
         const curr = window.pageYOffset;
         setTimeout(() => {
           resolve(curr - window.pageYOffset);
-        }, 500);
+        }, 300);
       }).then(this.scroll);
     }
   }
@@ -46,11 +53,16 @@ export default class Topbar extends Component {
   scroll(distance) {
     if (distance < -100 && !this.props.main.topbarHidden) {
       this.props.hideTopbar(true);
-    } else if (distance > 10 && this.props.main.topbarHidden) {
-      this.props.hideTopbar(false);
+      return;
     }
 
-    this.scrollEvent = null;
+    if (distance > 10 && this.props.main.topbarHidden) {
+      this.props.hideTopbar(false);
+
+      return;
+    }
+
+    return this.resetScroll();
   }
 
   render() {

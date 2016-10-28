@@ -85,7 +85,10 @@ $phone: "only screen and (min-device-width: 375px) and (max-device-width: 667px)
 
   .navigation {
     text-align: center;
-
+    white-space: nowrap;
+    @media #{$phone} {
+      white-space: normal;
+    }
   }
 
   .image {

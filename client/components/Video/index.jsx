@@ -64,7 +64,7 @@ export default class Video extends Component {
       <div className={activeClassName}>
         <ReactCSSTransitionGroup
           transitionName={transitionBlockNames}
-          transitionEnterTimeout={0}
+          transitionEnterTimeout={ANIMATION}
           transitionLeaveTimeout={ANIMATION}
         >
           {this.renderBlock()}
@@ -72,7 +72,7 @@ export default class Video extends Component {
         <ReactCSSTransitionGroup
           transitionName={transitionPlayerNames}
           transitionEnterTimeout={ANIMATION}
-          transitionLeaveTimeout={0}
+          transitionLeaveTimeout={ANIMATION}
         >
           {this.renderVideo()}
         </ReactCSSTransitionGroup>

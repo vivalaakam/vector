@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import getCapture from '../../helpers/getCapture';
 import Close from '../UI/Close';
 import style from './videoPlayer.scss';
 
@@ -34,6 +35,7 @@ export default class VideoPlayer extends Component {
   stopVideo() {
     const { stopVideo } = this.props;
     this.refVideo.pause();
+    this.refVideo.poster = getCapture(this.refVideo);
     stopVideo();
   }
 
@@ -44,10 +46,7 @@ export default class VideoPlayer extends Component {
   }
 
   ended() {
-    const { stopVideo } = this.props;
-    this.refVideo.currentTime = 0;
-    this.refVideo.pause();
-    stopVideo();
+    this.stopVideo();
   }
 
   render() {
@@ -55,6 +54,7 @@ export default class VideoPlayer extends Component {
       <div className={style.VideoPlayer}>
         <Close className={style.hide} onClick={::this.stopVideo} />
         <video
+          crossOrigin="Anonymous"
           className={style.video}
           muted
           onLoadedMetadata={::this.onLoad}
