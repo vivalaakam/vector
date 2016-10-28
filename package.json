@@ -5,14 +5,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node run prod",
+    "start": "npm run build && npm run server",
     "server": "node index.js --harmony-generators",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --verbose --colors --display-error-details --config ./config/prod.config.js",
     "build-dev": "webpack --verbose --watch --colors --display-error-details --config ./config/dev.config.js",
     "dev": "concurrently --kill-others \"npm run build-dev\" \"npm run server\"",
-    "eslint": "eslint --ext .js --ext .jsx ./",
-    "prod": "npm run build && npm run server"
+    "eslint": "eslint --ext .js --ext .jsx ./"
   },
   "license": "MIT",
   "dependencies": {
