@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js --harmony-generators",
-    "postinstall": "npm run build",
+    "postdeploy": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --verbose --colors --display-error-details --config ./config/prod.config.js",
     "build-dev": "webpack --verbose --watch --colors --display-error-details --config ./config/dev.config.js",
