@@ -55,21 +55,13 @@ $phone: "only screen and (min-device-width: 375px) and (max-device-width: 667px)
     margin: 0px;
     padding: 0px;
     list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
     @media #{$phone} {
       height: 0px;
       overflow: hidden;
-    }
-
-    li {
-      display: inline-block;
-      margin-right: 25px;
-      &:last-child {
-        margin-right: 0px;
-      }
-      @media #{$phone} {
-        display: block;
-      }
-
+      flex-direction: column;
     }
   }
 
@@ -79,7 +71,7 @@ $phone: "only screen and (min-device-width: 375px) and (max-device-width: 667px)
     line-height: 21px;
     text-decoration: none;
     color: #fff;
-    padding: 18px;
+    padding: 18px 9px;
     @media #{$phone} {
       padding: 9px;
       display: block;
